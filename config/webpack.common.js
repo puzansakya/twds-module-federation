@@ -3,6 +3,7 @@ const paths = require('./paths')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // extract css to files
 const tailwindcss = require('tailwindcss')
 const autoprefixer = require('autoprefixer') // help tailwindcss to work
@@ -17,6 +18,9 @@ module.exports = {
     filename: '[name].bundle.js',
     publicPath: '/',
   },
+  // output: {
+  //   publicPath: 'http://localhost:3000/',
+  // },
 
   // Customize the webpack build process
   plugins: [
@@ -48,6 +52,17 @@ module.exports = {
       favicon: paths.src + '/assets/icons/favicon.png',
       template: paths.public + '/index.html', // template file
       filename: 'index.html', // output file
+    }),
+
+    new ModuleFederationPlugin({
+      name: 'consumer2',
+      library: { type: 'var', name: 'consumer2' },
+      filename: 'remoteEntry.js',
+      remotes: {
+        remote: 'remote',
+      },
+      exposes: {},
+      shared: ['react', 'react-dom'],
     }),
   ],
 
