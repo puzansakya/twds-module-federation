@@ -8,19 +8,21 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin') // extract css t
 const tailwindcss = require('tailwindcss')
 const autoprefixer = require('autoprefixer') // help tailwindcss to work
 
+const deps = require('../package.json').dependencies
+
 module.exports = {
   // Where webpack looks to start building the bundle
   entry: [paths.src + '/index.js'],
 
   // Where webpack outputs the assets and bundles
-  output: {
-    path: paths.build,
-    filename: '[name].bundle.js',
-    publicPath: '/',
-  },
   // output: {
-  //   publicPath: 'http://localhost:3000/',
+  //   path: paths.build,
+  //   filename: '[name].bundle.js',
+  //   publicPath: '/',
   // },
+  output: {
+    publicPath: 'http://localhost:8080/',
+  },
 
   // Customize the webpack build process
   plugins: [
@@ -55,14 +57,36 @@ module.exports = {
     }),
 
     new ModuleFederationPlugin({
-      name: 'consumer2',
-      library: { type: 'var', name: 'consumer2' },
+      name: 'twds',
+      library: { type: 'var', name: 'twds' },
       filename: 'remoteEntry.js',
-      remotes: {
-        remote: 'remote',
+      remotes: {},
+      exposes: {
+        './Avatar': paths.src + '/components/avatar/index.jsx',
+        './Badge': paths.src + '/components/badge/index.jsx',
+        './HeroIcon': paths.src + '/components/heroicon/index.jsx',
+        './Input': paths.src + '/components/input/index.jsx',
+        './Modal': paths.src + '/components/modal/index.jsx',
+        './ModalHeader': paths.src + '/components/modal/header.jsx',
+        './ModalContent': paths.src + '/components/modal/content.jsx',
+        './ModalFooter': paths.src + '/components/modal/footer.jsx',
+        './Popper': paths.src + '/components/popper/index.jsx',
+        './Tab': paths.src + '/components/tabs/index.jsx',
+        './TimePicker': paths.src + '/components/timepicker/index.jsx',
+        './MainWrapper': paths.src + '/components/mainwrapper/index.jsx',
+        './CheckboxGroup': paths.src + '/components/checkboxgroup/index.jsx',
       },
-      exposes: {},
-      shared: ['react', 'react-dom'],
+      shared: {
+        ...deps,
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: deps['react-dom'],
+        },
+      },
     }),
   ],
 
