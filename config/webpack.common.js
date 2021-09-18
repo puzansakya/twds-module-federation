@@ -5,8 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // extract css to files
-const tailwindcss = require('tailwindcss')
-const autoprefixer = require('autoprefixer') // help tailwindcss to work
+// const tailwindcss = require('tailwindcss')
+// const autoprefixer = require('autoprefixer') // help tailwindcss to work
 
 const deps = require('../package.json').dependencies
 
@@ -75,6 +75,8 @@ module.exports = {
         './TimePicker': paths.src + '/components/timepicker/index.jsx',
         './MainWrapper': paths.src + '/components/mainwrapper/index.jsx',
         './CheckboxGroup': paths.src + '/components/checkboxgroup/index.jsx',
+        './Seperator': paths.src + '/components/seperator/index.jsx',
+        './Menu': paths.src + '/components/menu/index.jsx',
       },
       shared: {
         ...deps,
@@ -103,15 +105,16 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
-          {
-            loader: 'postcss-loader', // postcss loader needed for tailwindcss
-            options: {
-              postcssOptions: {
-                ident: 'postcss',
-                plugins: [tailwindcss, autoprefixer],
-              },
-            },
-          },
+          'postcss-loader',
+          // {
+          //   loader: 'postcss-loader', // postcss loader needed for tailwindcss
+          //   options: {
+          //     postcssOptions: {
+          //       ident: 'postcss',
+          //       plugins: [tailwindcss, autoprefixer],
+          //     },
+          //   },
+          // },
         ],
       },
 
