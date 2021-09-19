@@ -1,0 +1,86 @@
+.modal-transition-enter .overlay,
+.drawer-transition-enter .overlay {
+  opacity: 0;
+}
+
+.modal-transition-enter-active .overlay,
+.drawer-transition-enter-active .overlay {
+  opacity: 0.6;
+  transition: opacity 200ms;
+}
+
+.modal-transition-enter-done .overlay,
+.drawer-transition-enter-done .overlay {
+  opacity: 0.6;
+  transition: opacity 200ms;
+}
+
+.modal-transition-exit .overlay,
+.drawer-transition-exit .overlay {
+  opacity: 0.6;
+}
+
+.modal-transition-exit-active .overlay,
+.drawer-transition-exit-active .overlay {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+/* Modal Transitions */
+
+.modal-transition-enter .modal {
+  opacity: 0;
+  transform: scale(0.95) translateY(-30px);
+}
+
+.modal-transition-enter-active .modal {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.modal-transition-exit .modal {
+  opacity: 1;
+}
+
+.modal-transition-exit-active .modal {
+  opacity: 0;
+  transform: scale(0.95) translateY(-30px);
+  transition: opacity 200ms, transform 200ms;
+}
+
+/* Drawer Transitions */
+.drawer-transition-enter .left,
+.drawer-transition-exit-active .left {
+  /* @apply -translate-x-60; */
+  transform: translateX(-15rem);
+}
+
+.drawer-transition-enter .right,
+.drawer-transition-exit-active .right {
+  /* @apply -translate-x-60; */
+  transform: translateX(15rem);
+}
+
+.drawer-transition-enter .drawer {
+  opacity: 0;
+  /* transform: translateY(100%); */
+}
+
+.drawer-transition-enter-active .drawer {
+  opacity: 1;
+  /* transform: translateY(0); */
+  /* @apply -translate-x-0; */
+  transform: translateX(0);
+  transition: opacity 200ms, transform 200ms;
+}
+
+.drawer-transition-exit .drawer {
+  opacity: 1;
+}
+
+.drawer-transition-exit-active .drawer {
+  opacity: 0;
+  /* transform: translateY(100%); */
+  transition: opacity 200ms, transform 200ms;
+}
