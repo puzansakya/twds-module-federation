@@ -77,6 +77,8 @@ module.exports = {
         './CheckboxGroup': paths.src + '/components/checkboxgroup/index.jsx',
         './Seperator': paths.src + '/components/seperator/index.jsx',
         './Menu': paths.src + '/components/menu/index.jsx',
+        './Drawer': paths.src + '/components/drawer/index.jsx',
+        './useDisclosure': paths.src + '/hooks/useDisclosure.jsx',
       },
       shared: {
         ...deps,

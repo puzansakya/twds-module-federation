@@ -3,7 +3,7 @@ import { usePopper } from 'react-popper'
 import PropTypes from 'prop-types'
 
 // HOOKS
-import { useDisclosure } from '../../hooks/useDiscloser.jsx'
+import { useDisclosure } from '../../hooks/useDisclosure.jsx'
 
 const Popper = ({ trigger, content }) => {
   const { isOpen, open, close } = useDisclosure()

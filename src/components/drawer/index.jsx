@@ -2,6 +2,8 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 
+import './index.css'
+
 const Drawer = ({ children, open, close, placement = 'left' }) => {
   const content = (
     <div className='sidebar absolute top-0 bottom-0 w-full'>
