@@ -78,6 +78,12 @@ module.exports = {
         './Seperator': paths.src + '/components/seperator/index.jsx',
         './Menu': paths.src + '/components/menu/index.jsx',
         './Drawer': paths.src + '/components/drawer/index.jsx',
+        './Box': paths.src + '/components/box/index.jsx',
+        './StackX': paths.src + '/components/stackX/index.jsx',
+        './StackY': paths.src + '/components/stackY/index.jsx',
+        './Table': paths.src + '/components/table/index.jsx',
+
+        // HOOKS
         './useDisclosure': paths.src + '/hooks/useDisclosure.jsx',
       },
       shared: {

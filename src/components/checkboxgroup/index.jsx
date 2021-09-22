@@ -69,7 +69,7 @@ const CheckboxGroup = ({ items, selected, onCheckboxChange, track }) => {
           checked={checked[item[track]] ? true : false}
           onChange={(e) => handleCheckboxChange(e, item)}
           type='checkbox'
-          name=''
+          name={item.label}
           id={item[track]}
         />
         <label className='ml-2 leading-5' htmlFor={item[track]}>
