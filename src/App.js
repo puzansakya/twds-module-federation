@@ -29,7 +29,7 @@ const App = () => {
     <MainWrapper>
       <ToastContainer />
 
-      <Box boxClass='container mx-auto py-5'>
+      <Box boxClass='container mx-auto p-4'>
         <StackY>
           <Box>
             Webpack 5 boilerplate with React 17, Tailwind 2, using babel, sass,

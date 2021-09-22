@@ -75,12 +75,12 @@ const Table = ({ colData, tableData }) => {
   )
 
   return (
-    <div className='flex flex-col space-y-2 text-gray-900'>
-      <div className='bg-white rounded-md overflow-hidden'>
+    <div className='flex flex-col space-y-2 text-gray-900 w-full overflow-hidden'>
+      <div className='bg-white rounded-md overflow-hidden '>
         <div className='max-w-screen-xl overflow-x-auto'>
           <table
             {...getTableProps()}
-            className='min-w-full divide-y divide-gray-200'
+            className='min-w-full divide-y divide-gray-200 w-full'
           >
             <thead className='bg-gray-50'>
               {headerGroups.map((headerGroup) => (

@@ -253,11 +253,7 @@ const TableSection = () => {
     },
   ]
 
-  return (
-    <div className='flex flex-col space-y-4'>
-      <Table colData={colData} tableData={persons} />
-    </div>
-  )
+  return <Table colData={colData} tableData={persons} />
 }
 
 export default TableSection
