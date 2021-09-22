@@ -26,12 +26,6 @@ const CheckboxHeader = ({ getToggleAllRowsSelectedProps }) => (
   </div>
 )
 
-const Cell = ({ row }) => (
-  <div>
-    <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
-  </div>
-)
-
 const Table = ({ colData, tableData }) => {
   const data = useMemo(() => tableData, [tableData])
   const columns = useMemo(() => colData, [colData])
@@ -58,10 +52,22 @@ const Table = ({ colData, tableData }) => {
           id: 'selection',
           // The header can use the table's getToggleAllRowsSelectedProps method
           // to render a checkbox
-          Header: <CheckboxHeader />,
+          Header: function selectionHeader({ getToggleAllRowsSelectedProps }) {
+            return (
+              <div>
+                <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+              </div>
+            )
+          },
           // The cell can use the individual row's getToggleRowSelectedProps method
           // to the render a checkbox
-          Cell: <Cell />,
+          Cell: function selectionCell({ row }) {
+            return (
+              <div>
+                <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+              </div>
+            )
+          },
         },
         ...columns,
       ])
@@ -149,11 +155,6 @@ IndeterminateCheckbox.propTypes = {
 Table.propTypes = {
   colData: PropTypes.any,
   tableData: PropTypes.any,
-}
-Cell.propTypes = {
-  row: PropTypes.shape({
-    getToggleRowSelectedProps: PropTypes.any,
-  }),
 }
 
 CheckboxHeader.propTypes = {

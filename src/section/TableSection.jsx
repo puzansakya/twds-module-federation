@@ -175,33 +175,37 @@ const TableSection = () => {
       Header: 'Ranking',
       accessor: 'ranking',
       Cell: function rankCell(tableInfo) {
-        ;<div className='flex items-center'>
-          <div className='text-sm text-gray-900'>
-            {tableInfo.data[tableInfo.row.index].ranking}
+        return (
+          <div className='flex items-center'>
+            <div className='text-sm text-gray-900'>
+              {tableInfo.data[tableInfo.row.index].ranking}
+            </div>
+            <div className='flex'>
+              <HeroIcon name='star' />
+              <HeroIcon name='star' />
+              <HeroIcon name='star' />
+              <HeroIcon name='star' />
+            </div>
           </div>
-          <div className='flex'>
-            <HeroIcon name='star' />
-            <HeroIcon name='star' />
-            <HeroIcon name='star' />
-            <HeroIcon name='star' />
-          </div>
-        </div>
+        )
       },
     },
     {
       Header: 'Status',
       accessor: 'status',
       Cell: function statusCell(tableInfo) {
-        ;<div className='flex items-center space-x-4 text-gray-900'>
-          <StatusSign bg={tableInfo.data[tableInfo.row.index].statusColor} />
-          <p
-            className={`${
-              tableInfo.data[tableInfo.row.index].statusTextColor
-            } font-semibold`}
-          >
-            {tableInfo.data[tableInfo.row.index].status}
-          </p>
-        </div>
+        return (
+          <div className='flex items-center space-x-4 text-gray-900'>
+            <StatusSign bg={tableInfo.data[tableInfo.row.index].statusColor} />
+            <p
+              className={`${
+                tableInfo.data[tableInfo.row.index].statusTextColor
+              } font-semibold`}
+            >
+              {tableInfo.data[tableInfo.row.index].status}
+            </p>
+          </div>
+        )
       },
     },
     {
